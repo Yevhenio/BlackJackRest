@@ -11,7 +11,7 @@ import java.util.Random;
  * Created by eugene on 05.10.15.
  */
 @Path("/card")
-public class Cards {
+public class CardsRestService {
     public static int counter;
     public static ArrayList<Card> arr = new ArrayList();
     public static int counterD;
@@ -48,7 +48,7 @@ public class Cards {
     }
 
     @GET
-    @Path("/rand")
+    @Path("/show")
     @Produces("text/plain")
     public static String randCard() {
         String out = "";
@@ -56,7 +56,7 @@ public class Cards {
         counter = 0;
 
         for (int i = 0; i < arr.size(); i++) {
-            counter += arr.get(i).getValue();
+            counter += arr.get(i).getValueAsInt();
         }
         if (counter > 21) {
             for (int i = 0; i < arr.size(); i++) {
@@ -87,14 +87,14 @@ public class Cards {
     }
 
     @GET
-    @Path("/randD")
+    @Path("/showD")
     @Produces("text/plain")
     public static String randD() {
 
         String outD = "";
         counterD = 0;
         for (int i = 0; i < arrD.size(); i++) {
-            counterD += arrD.get(i).getValue();
+            counterD += arrD.get(i).getValueAsInt();
         }
         if (counterD > 21) {
             for (int i = 0; i < arrD.size(); i++) {

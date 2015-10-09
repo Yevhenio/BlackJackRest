@@ -1,3 +1,4 @@
+import com.yevhenio.blackjack.ClassCard.Card;
 import com.yevhenio.blackjack.ClassCard.CardService;
 import com.yevhenio.blackjack.ClassUser.User;
 import com.yevhenio.blackjack.servicePack.UserDAO;
@@ -24,6 +25,10 @@ public class Main {
 
         Random r = new Random();
         System.out.println(cs.getCards().get(r.nextInt(52)));
+        for (int i = 0; i < cs.getCards().size(); i++) {
+            Card c = (Card) cs.getCards().get(i);
+            System.out.println(c.toString()) ;
+        }
 
 
     }

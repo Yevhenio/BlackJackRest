@@ -11,8 +11,8 @@
     <title>BlackJack Page</title>
 </head>
 <body>
-<iframe name="frame" src="http://localhost:8080/black/rest/card/rand" width="300" height="300" align="left"></iframe>
-<iframe name="frame" src="http://localhost:8080/black/rest/card/randD" width="300" height="300" align="right"></iframe>
+<iframe name="frame" src="http://localhost:8080/black/rest/card/show" width="300" height="300" align="left"></iframe>
+<iframe name="frame" src="http://localhost:8080/black/rest/card/showD" width="300" height="300" align="right"></iframe>
 <a href="http://localhost:8080/black/rest/card/get" type="submit">Get one more card</a>
 <a href="http://localhost:8080/black/rest/card/start">Start</a>
 <a href="http://localhost:8080/black/rest/card/res">Stand</a>
