@@ -15,44 +15,51 @@ public class Cards {
     public static int counter;
     public static ArrayList<Card> arr = new ArrayList();
     static CardService cs = new CardService();
-
+    static Random r = new Random();
 
     @GET
-    @Path("/push")
-    public Response pushCard() {
-        String out = String.valueOf(counter);
-        return Response.status(200).entity(out).build();
+    @Path("/get")
+    public static void getOne() {
+        Card card = (Card) cs.getCards().get(r.nextInt(52));
+        arr.add(card);
+    }
+
+    @GET
+    @Path("/start")
+    public static void start() {
+        Card first = (Card) cs.getCards().get(r.nextInt(52));
+        Card second = (Card) cs.getCards().get(r.nextInt(52));
+        arr.add(first);
+        arr.add(second);
     }
 
     @GET
     @Path("/rand")
     @Produces("text/plain")
     public static String randCard() {
-        Random r = new Random();
-        Card first = (Card) cs.getCards().get(r.nextInt(52));
-        Card second = (Card) cs.getCards().get(r.nextInt(52));
-        arr.add(first);
-        arr.add(second);
         String out = "";
-        counter += first.getValue() + second.getValue();
+        for (int i = 0; i < arr.size(); i++) {
+            counter += arr.get(i).getValue();
+        }
         if (counter > 21) {
             for (int i = 0; i < arr.size(); i++) {
-                out += "\n"+arr.get(i).toString() +"\n";
+                out += "\n" + arr.get(i).toString() + "\n";
             }
-            out +="\n" + " You got: " + counter + "\n" + " You loose!";
+            out += "\n" + " You got: " + counter + "\n" + " You loose!";
             counter = 0;
             arr.clear();
         } else if (counter == 21) {
             for (int i = 0; i < arr.size(); i++) {
-                out += "\n"+arr.get(i).toString() +"\n";
+                out += "\n" + arr.get(i).toString() + "\n";
             }
             out += "\n" + " You got: " + counter + "\n" + " BLACK JACK!";
-            counter=0;
+            counter = 0;
             arr.clear();
         } else {
-
-            out = first.toString() + "\n" + second.toString() +
-                    "\n" + " You got: " + counter + "\n";
+            for (int i = 0; i < arr.size(); i++) {
+                out += "\n" + arr.get(i).toString() + "\n";
+            }
+            out += "\n" + " You got: " + counter + "\n";
         }
         return out;
     }
