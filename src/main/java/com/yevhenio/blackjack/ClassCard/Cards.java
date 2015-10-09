@@ -18,8 +18,8 @@ public class Cards {
     public static ArrayList<Card> arrD = new ArrayList();
     static CardService cs = new CardService();
     static Random r = new Random();
-    static String out = "";
-    static String outD = "";
+    static String win = "";
+    static String winD = "";
 
     @GET
     @Path("/get")
@@ -35,6 +35,8 @@ public class Cards {
         counterD = 0;
         arr.clear();
         arrD.clear();
+        win = "";
+        winD = "";
         Card first = (Card) cs.getCards().get(r.nextInt(52));
         Card second = (Card) cs.getCards().get(r.nextInt(52));
         Card firstD = (Card) cs.getCards().get(r.nextInt(52));
@@ -49,6 +51,7 @@ public class Cards {
     @Path("/rand")
     @Produces("text/plain")
     public static String randCard() {
+        String out = "";
 
         counter = 0;
 
@@ -59,11 +62,12 @@ public class Cards {
             for (int i = 0; i < arr.size(); i++) {
                 out += "\n" + arr.get(i).toString() + "\n";
             }
-            out += "\n" + " You got: " + counter + "\n" ;
+            out += "\n" + " You got: " + counter + "\n" + " You loose";
             counter = 0;
-            counterD = 0;
+            //counterD = 0;
             arr.clear();
-            arrD.clear();
+            //arrD.clear();
+            win = "";
         } else if (counter == 21) {
             for (int i = 0; i < arr.size(); i++) {
                 out += "\n" + arr.get(i).toString() + "\n";
@@ -77,16 +81,17 @@ public class Cards {
             for (int i = 0; i < arr.size(); i++) {
                 out += "\n" + arr.get(i).toString() + "\n";
             }
-            out += "\n" + " You got: " + counter + "\n";
+            out += "\n" + " You got: " + counter + "\n" + win;
         }
         return out;
     }
+
     @GET
     @Path("/randD")
     @Produces("text/plain")
     public static String randD() {
 
-
+        String outD = "";
         counterD = 0;
         for (int i = 0; i < arrD.size(); i++) {
             counterD += arrD.get(i).getValue();
@@ -95,16 +100,17 @@ public class Cards {
             for (int i = 0; i < arrD.size(); i++) {
                 outD += "\n" + arrD.get(i).toString() + "\n";
             }
-            outD += "\n" + " You got: " + counterD + "\n" ;
+            outD += "\n" + " You got: " + counterD + "\n" + " You loose";
             counter = 0;
             counterD = 0;
             arr.clear();
             arrD.clear();
+            winD = "";
         } else if (counterD == 21) {
             for (int i = 0; i < arrD.size(); i++) {
                 outD += "\n" + arrD.get(i).toString() + "\n";
             }
-            outD += "\n" + " You got: " + counterD + "\n" ;
+            outD += "\n" + " You got: " + counterD + "\n";
             counter = 0;
             counterD = 0;
             arr.clear();
@@ -113,20 +119,22 @@ public class Cards {
             for (int i = 0; i < arrD.size(); i++) {
                 outD += "\n" + arrD.get(i).toString() + "\n";
             }
-            outD += "\n" + " You got: " + counterD + "\n";
+            outD += "\n" + " You got: " + counterD + "\n" + winD;
         }
         return outD;
     }
+
     @GET
     @Path("/res")
-    public void getResult(){
-        if (counter > counterD){
-            out +=" You win";
-            outD +=" You loose";
-        }else if ( counter == counterD){
-            out +=" Draw";
-            outD +=" Draw";
+    public void getResult() {
+        if (counter > counterD) {
+            win += " You win";
+            winD += " You loose";
+        } else if (counter == counterD) {
+            win += " Draw";
+            winD += " Draw";
         }
+
     }
 
 }
