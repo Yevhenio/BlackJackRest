@@ -1,0 +1,85 @@
+package com.yevhenio.blackjack.ClassCard;
+
+import java.util.ArrayList;
+
+/**
+ * Created by eugene on 08.10.15.
+ */
+public class CardService {
+    static ArrayList<Card> cards = new ArrayList<Card>();
+    static {
+
+        cards.add(new Card(2, 0));
+        cards.add(new Card(2, 1));
+        cards.add(new Card(2, 2));
+        cards.add(new Card(2, 3));
+
+        cards.add(new Card(3, 0));
+        cards.add(new Card(3, 1));
+        cards.add(new Card(3, 2));
+        cards.add(new Card(3, 3));
+
+        cards.add(new Card(4, 0));
+        cards.add(new Card(4, 1));
+        cards.add(new Card(4, 2));
+        cards.add(new Card(4, 3));
+
+        cards.add(new Card(5, 0));
+        cards.add(new Card(5, 1));
+        cards.add(new Card(5, 2));
+        cards.add(new Card(5, 3));
+
+        cards.add(new Card(6, 0));
+        cards.add(new Card(6, 1));
+        cards.add(new Card(6, 2));
+        cards.add(new Card(6, 3));
+
+        cards.add(new Card(7, 0));
+        cards.add(new Card(7, 1));
+        cards.add(new Card(7, 2));
+        cards.add(new Card(7, 3));
+
+        cards.add(new Card(8, 0));
+        cards.add(new Card(8, 1));
+        cards.add(new Card(8, 2));
+        cards.add(new Card(8, 3));
+
+        cards.add(new Card(9, 0));
+        cards.add(new Card(9, 1));
+        cards.add(new Card(9, 2));
+        cards.add(new Card(9, 3));
+
+        cards.add(new Card(10, 0));
+        cards.add(new Card(10, 1));
+        cards.add(new Card(10, 2));
+        cards.add(new Card(10, 3));
+
+        cards.add(new Card(11, 0));
+        cards.add(new Card(11, 1));
+        cards.add(new Card(11, 2));
+        cards.add(new Card(11, 3));
+
+
+        cards.add(new Card(12, 0));
+        cards.add(new Card(12, 1));
+        cards.add(new Card(12, 2));
+        cards.add(new Card(12, 3));
+
+        cards.add(new Card(13, 0));
+        cards.add(new Card(13, 1));
+        cards.add(new Card(13, 2));
+        cards.add(new Card(13, 3));
+
+        cards.add(new Card(1, 0));
+        cards.add(new Card(1, 1));
+        cards.add(new Card(1, 2));
+        cards.add(new Card(1, 3));
+
+    }
+public ArrayList getCards(){
+
+
+    return cards;
+}
+
+}
