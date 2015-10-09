@@ -11,6 +11,10 @@
     <title>BlackJack Page</title>
 </head>
 <body>
-<a href="http://localhost:8080/black/rest/card/rand">Random</a>
+<iframe src="http://localhost:8080/black/rest/card/rand" width="300" height="300" align="left">
+
+</iframe>
+<button type="button" onclick="">Click me </button>
+
 </body>
 </html>

@@ -23,7 +23,8 @@ public class Main {
         CardService cs = new CardService();
 
         Random r = new Random();
-        System.out.println(cs.getCards().remove(r.nextInt(52)));
+        System.out.println(cs.getCards().get(r.nextInt(52)));
+
 
     }
 
