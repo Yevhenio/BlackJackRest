@@ -3,7 +3,7 @@ import com.yevhenio.blackjack.ClassCard.CardService;
 import com.yevhenio.blackjack.ClassCard.CardsRestService;
 import com.yevhenio.blackjack.ClassUser.User;
 import com.yevhenio.blackjack.servicePack.UserDAO;
-import com.yevhenio.blackjack.servicePack.UserService;
+import com.yevhenio.blackjack.servicePack.UserRestService;
 
 import java.util.Random;
 
@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class Main {
     public static void main(String[] args) {
-        UserService us = new UserService();
+        UserRestService us = new UserRestService();
         UserDAO ud = new UserDAO();
         //User le = new User(1111);
 
