@@ -1,8 +1,10 @@
 package com.yevhenio.blackjack.ClassCard;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import com.yevhenio.blackjack.ClassUser.TransLog;
+import com.yevhenio.blackjack.ClassUser.User;
+import com.yevhenio.blackjack.servicePack.UserDAO;
+
+import javax.ws.rs.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -20,8 +22,9 @@ public class CardsRestService {
     static Random r = new Random();
     static String result = "";
     static String resultD = "";
+    public int bet;
 
-//adding one more card to player`s hand
+    //adding one more card to player`s hand
     @GET
     @Path("/get")
     public static void getOne() {
@@ -29,15 +32,15 @@ public class CardsRestService {
         hand.add(card);
     }
 
-//adding one card to dealer`s hand
+    //adding one card to dealer`s hand
     @GET
     @Path("/getD")
-    public static void getOneD() {
+    public static void getOneDealer() {
         Card card = (Card) cs.getCards().get(r.nextInt(52));
         handD.add(card);
     }
 
-//starts the game, adding 2 cards for both of players
+    //starts the game, adding 2 cards for both of players
     @GET
     @Path("/start")
     public static void start() {
@@ -49,15 +52,23 @@ public class CardsRestService {
         resultD = "";
         Card first = (Card) cs.getCards().get(r.nextInt(52));
         Card second = (Card) cs.getCards().get(r.nextInt(52));
+        if (first.equals(second)) {
+            first = (Card) cs.getCards().get(r.nextInt(52));
+            second = (Card) cs.getCards().get(r.nextInt(52));
+        }
         Card firstD = (Card) cs.getCards().get(r.nextInt(52));
         Card secondD = (Card) cs.getCards().get(r.nextInt(52));
+        if (firstD.equals(secondD)) {
+            firstD = (Card) cs.getCards().get(r.nextInt(52));
+            secondD = (Card) cs.getCards().get(r.nextInt(52));
+        }
         hand.add(first);
         hand.add(second);
         handD.add(firstD);
         handD.add(secondD);
     }
 
-//shows the player`s cards
+    //shows the player`s cards
     @GET
     @Path("/show")
     @Produces("text/plain")
@@ -97,11 +108,11 @@ public class CardsRestService {
         return out;
     }
 
-//shows the dealer`s cards
+    //shows the dealer`s cards
     @GET
     @Path("/showD")
     @Produces("text/plain")
-    public static String showD() {
+    public static String showDealer() {
 
         String outD = "";
         totalD = 0;
@@ -130,15 +141,13 @@ public class CardsRestService {
         } else {
             for (int i = 0; i < handD.size(); i++) {
                 outD += "\n" + handD.get(i).toString() + "\n";
-
-
             }
             outD += "\n" + " You got: " + totalD + "\n" + resultD;
         }
         return outD;
     }
 
-//adding result to "show" after "stand"
+    //adding result to "show" after "stand"
     @GET
     @Path("/stand")
     public void getResult() {
@@ -151,6 +160,7 @@ public class CardsRestService {
         }
 
     }
+
 
 }
 

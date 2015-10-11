@@ -1527,6 +1527,18 @@
       <column name="viewowner" sqlType="name" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <column name="definition" sqlType="text" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
     </table>
+    <table name="hibernate_sequence" schema="public" catalog="MyDB" type="SEQUENCE">
+      <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="increment_by" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="max_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="min_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cache_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
     <table name="pfm_attribute" schema="public" catalog="MyDB" type="TABLE">
       <column name="attribute" sqlType="text" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
       <column name="typeofattrib" sqlType="text" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
@@ -1617,9 +1629,10 @@
       <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
     </table>
     <table name="transactions" schema="public" catalog="MyDB" type="TABLE">
-      <column name="id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idnum" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="value" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <primary-key name="transactions_pkey" columns="id"/>
+      <primary-key name="transactions_pkey" columns="idnum"/>
     </table>
     <table name="userdb" schema="public" catalog="MyDB" type="TABLE">
       <column name="id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>

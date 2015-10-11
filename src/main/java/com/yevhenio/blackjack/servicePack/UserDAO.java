@@ -10,7 +10,7 @@ import org.hibernate.Transaction;
  */
 public class UserDAO {
 
-    private Session session = HibSingle.getInstance().getSession();
+    private static Session session = HibSingle.getInstance().getSession();
 
     public void addUser(User user) {
         Transaction tx = session.beginTransaction();
@@ -36,7 +36,7 @@ public class UserDAO {
     public void updateUser(User user) {
         Transaction tx = session.beginTransaction();
 
-      //  User temp = (User) session.get(User.class, user.getId());
+
         session.update(user);
         tx.commit();
 
