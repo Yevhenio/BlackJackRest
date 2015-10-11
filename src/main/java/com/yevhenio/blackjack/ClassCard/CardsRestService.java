@@ -3,7 +3,6 @@ package com.yevhenio.blackjack.ClassCard;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -12,127 +11,143 @@ import java.util.Random;
  */
 @Path("/card")
 public class CardsRestService {
-    public static int counter;
-    public static ArrayList<Card> arr = new ArrayList();
-    public static int counterD;
-    public static ArrayList<Card> arrD = new ArrayList();
+    //marked with "D" used to develop dealer`s functions
+    public static int total;
+    public static ArrayList<Card> hand = new ArrayList();
+    public static int totalD;
+    public static ArrayList<Card> handD = new ArrayList();
     static CardService cs = new CardService();
     static Random r = new Random();
-    static String win = "";
-    static String winD = "";
+    static String result = "";
+    static String resultD = "";
 
+//adding one more card to player`s hand
     @GET
     @Path("/get")
     public static void getOne() {
         Card card = (Card) cs.getCards().get(r.nextInt(52));
-        arr.add(card);
+        hand.add(card);
     }
 
+//adding one card to dealer`s hand
+    @GET
+    @Path("/getD")
+    public static void getOneD() {
+        Card card = (Card) cs.getCards().get(r.nextInt(52));
+        handD.add(card);
+    }
+
+//starts the game, adding 2 cards for both of players
     @GET
     @Path("/start")
     public static void start() {
-        counter = 0;
-        counterD = 0;
-        arr.clear();
-        arrD.clear();
-        win = "";
-        winD = "";
+        total = 0;
+        totalD = 0;
+        hand.clear();
+        handD.clear();
+        result = "";
+        resultD = "";
         Card first = (Card) cs.getCards().get(r.nextInt(52));
         Card second = (Card) cs.getCards().get(r.nextInt(52));
         Card firstD = (Card) cs.getCards().get(r.nextInt(52));
         Card secondD = (Card) cs.getCards().get(r.nextInt(52));
-        arr.add(first);
-        arr.add(second);
-        arrD.add(firstD);
-        arrD.add(secondD);
+        hand.add(first);
+        hand.add(second);
+        handD.add(firstD);
+        handD.add(secondD);
     }
 
+//shows the player`s cards
     @GET
     @Path("/show")
     @Produces("text/plain")
-    public static String randCard() {
+    public static String show() {
         String out = "";
 
-        counter = 0;
+        total = 0;
 
-        for (int i = 0; i < arr.size(); i++) {
-            counter += arr.get(i).getValueAsInt();
+        for (int i = 0; i < hand.size(); i++) {
+            total += hand.get(i).getValueAsInt();
         }
-        if (counter > 21) {
-            for (int i = 0; i < arr.size(); i++) {
-                out += "\n" + arr.get(i).toString() + "\n";
+        if (total > 21) {
+            for (int i = 0; i < hand.size(); i++) {
+                out += "\n" + hand.get(i).toString() + "\n";
             }
-            out += "\n" + " You got: " + counter + "\n" + " You loose";
-            counter = 0;
-            //counterD = 0;
-            arr.clear();
-            //arrD.clear();
-            win = "";
-        } else if (counter == 21) {
-            for (int i = 0; i < arr.size(); i++) {
-                out += "\n" + arr.get(i).toString() + "\n";
+            out += "\n" + " You got: " + total + "\n" + " You loose";
+            total = 0;
+            //totalD = 0;
+            hand.clear();
+            //handD.clear();
+            result = "";
+        } else if (total == 21) {
+            for (int i = 0; i < hand.size(); i++) {
+                out += "\n" + hand.get(i).toString() + "\n";
             }
-            out += "\n" + " You got: " + counter + "\n";
-            counter = 0;
-            counterD = 0;
-            arr.clear();
-            arrD.clear();
+            out += "\n" + " You got: " + total + "\n";
+            total = 0;
+            totalD = 0;
+            hand.clear();
+            handD.clear();
         } else {
-            for (int i = 0; i < arr.size(); i++) {
-                out += "\n" + arr.get(i).toString() + "\n";
+            for (int i = 0; i < hand.size(); i++) {
+                out += "\n" + hand.get(i).toString() + "\n";
             }
-            out += "\n" + " You got: " + counter + "\n" + win;
+            out += "\n" + " You got: " + total + "\n" + result;
         }
         return out;
     }
 
+//shows the dealer`s cards
     @GET
     @Path("/showD")
     @Produces("text/plain")
-    public static String randD() {
+    public static String showD() {
 
         String outD = "";
-        counterD = 0;
-        for (int i = 0; i < arrD.size(); i++) {
-            counterD += arrD.get(i).getValueAsInt();
+        totalD = 0;
+        for (int i = 0; i < handD.size(); i++) {
+            totalD += handD.get(i).getValueAsInt();
         }
-        if (counterD > 21) {
-            for (int i = 0; i < arrD.size(); i++) {
-                outD += "\n" + arrD.get(i).toString() + "\n";
+        if (totalD > 21) {
+            for (int i = 0; i < handD.size(); i++) {
+                outD += "\n" + handD.get(i).toString() + "\n";
             }
-            outD += "\n" + " You got: " + counterD + "\n" + " You loose";
-            counter = 0;
-            counterD = 0;
-            arr.clear();
-            arrD.clear();
-            winD = "";
-        } else if (counterD == 21) {
-            for (int i = 0; i < arrD.size(); i++) {
-                outD += "\n" + arrD.get(i).toString() + "\n";
+            outD += "\n" + " You got: " + totalD + "\n" + " You loose";
+            total = 0;
+            totalD = 0;
+            hand.clear();
+            handD.clear();
+            resultD = "";
+        } else if (totalD == 21) {
+            for (int i = 0; i < handD.size(); i++) {
+                outD += "\n" + handD.get(i).toString() + "\n";
             }
-            outD += "\n" + " You got: " + counterD + "\n";
-            counter = 0;
-            counterD = 0;
-            arr.clear();
-            arrD.clear();
+            outD += "\n" + " You got: " + totalD + "\n";
+            total = 0;
+            totalD = 0;
+            hand.clear();
+            handD.clear();
         } else {
-            for (int i = 0; i < arrD.size(); i++) {
-                outD += "\n" + arrD.get(i).toString() + "\n";
+            for (int i = 0; i < handD.size(); i++) {
+                outD += "\n" + handD.get(i).toString() + "\n";
+
+
             }
-            outD += "\n" + " You got: " + counterD + "\n" + winD;
+            outD += "\n" + " You got: " + totalD + "\n" + resultD;
         }
         return outD;
     }
 
+//adding result to "show" after "stand"
     @GET
-    @Path("/res")
+    @Path("/stand")
     public void getResult() {
-        if (counter > counterD) {
-            win += " You win";
-            winD += " You loose";
-        } else if (counter == counterD) {
-            win += " Draw";
-            winD += " Draw";
+        if (total > totalD) {
+            result += " You won";
+            resultD += " You loose";
+        } else if (total == totalD) {
+            result += " Draw";
+            resultD += " Draw";
         }
 
     }

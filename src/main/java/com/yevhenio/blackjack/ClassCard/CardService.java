@@ -5,6 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by eugene on 08.10.15.
  */
+//Service class for initializing the card deck
 public class CardService {
     static ArrayList<Card> cards = new ArrayList<Card>();
     static {

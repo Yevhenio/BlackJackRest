@@ -1,7 +1,6 @@
 package com.yevhenio.blackjack.ClassUser;
 
 
-import com.yevhenio.blackjack.servicePack.UserDAO;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,6 +8,7 @@ import java.io.Serializable;
 /**
  * Created by eugene on 05.10.15.
  */
+
 @Entity
 @Table(name = "UserDB")
 public class User implements Serializable {

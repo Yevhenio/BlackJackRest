@@ -12,6 +12,7 @@ import org.hibernate.service.ServiceRegistryBuilder;
 /**
  * Created by eugene on 05.10.15.
  */
+//Hibernate connection singleton
 public class HibSingle {
 
     private static SessionFactory ourSessionFactory;

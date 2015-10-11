@@ -6,6 +6,7 @@ import com.yevhenio.blackjack.ClassUser.User;
 /**
  * Created by eugene on 05.10.15.
  */
+//Service class for user
 public class UserService {
     UserDAO ud = new UserDAO();
 

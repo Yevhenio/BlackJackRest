@@ -5,7 +5,9 @@ import java.io.Serializable;
 
 /**
  * Created by eugene on 05.10.15.
- */@Entity
+ */
+//Entity class for transactions
+@Entity
 @Table(name = "Transactions")
 public class TransLog implements Serializable{
     @Id

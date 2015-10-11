@@ -41,7 +41,7 @@ public class UserDAO {
         tx.commit();
 
     }
-
+//Adding transaction to DB
     public void addTrans(TransLog transLog) {
         Transaction tx = session.beginTransaction();
 
