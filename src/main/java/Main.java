@@ -20,7 +20,7 @@ public class Main {
 
         //System.out.println(le.toString());
 
-        CardsRestService csr = new CardsRestService();
+
         //u.addUser(le);
         CardService cs = new CardService();
 
@@ -30,7 +30,15 @@ public class Main {
             Card c = (Card) cs.getCards().get(i);
             System.out.println(c.toString()) ;
         }*/
-
+CardsRestService csr = new CardsRestService();
+        csr.login(1111);
+        csr.start(10);
+        System.out.println(csr.show());
+        System.out.println("Dealer:" + "\n");
+        System.out.println(csr.showDealer());
+        System.out.println(us.currentUser);
+        System.out.println(us.player);
+        csr.getResult();
 
 
     }

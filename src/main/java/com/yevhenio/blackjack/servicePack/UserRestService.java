@@ -12,9 +12,11 @@ import javax.ws.rs.*;
 @Path("/fill")
 public class UserRestService {
     static UserDAO ud = new UserDAO();
-    int currentUser;
+   public static int currentUser;
+   public static User player;
     public int bet;
 
+    //adding money to player`s wallet
     @PUT
     @Path("/{id}/{value}")
     public void fillWallet(
@@ -29,20 +31,44 @@ public class UserRestService {
         ud.addTrans(new TransLog(user.getId(), sum));
     }
 
+    public void winTheBet() {
+        player.setWallet(player.getWallet() + bet * 2);
+        ud.updateUser(player);
+        ud.addTrans(new TransLog(player.getId(), bet * 2));
+        bet = 0;
+    }
+
+    public void pushTheBet() {
+        player.setWallet(player.getWallet() + bet);
+        ud.updateUser(player);
+        ud.addTrans(new TransLog(player.getId(), bet));
+        bet = 0;
+    }
+
+    public void blackJack() {
+        int half = bet / 2;
+        player.setWallet(player.getWallet() + bet * 2 + half);
+        ud.updateUser(player);
+        ud.addTrans(new TransLog(player.getId(), bet));
+        bet = 0;
+    }
+
+    //getting user from DB by his ID
     @GET
     @Path("/{user}")
-    @Produces("text/plain")
     public User getUser(
             @PathParam("user") int id) {
         User u = ud.getFromBase(id);
         currentUser = id;
+        player = u;
         return u;
     }
 
+    //setting a bet for current game
     @POST
     @Path("/bet/{value}")
     public void setBet(@PathParam("value") int value) {
-        fillWallet(currentUser,-value);
+        fillWallet(currentUser, -value);
         bet = value;
 
     }

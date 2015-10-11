@@ -3,6 +3,7 @@ package com.yevhenio.blackjack.ClassCard;
 import com.yevhenio.blackjack.ClassUser.TransLog;
 import com.yevhenio.blackjack.ClassUser.User;
 import com.yevhenio.blackjack.servicePack.UserDAO;
+import com.yevhenio.blackjack.servicePack.UserRestService;
 
 import javax.ws.rs.*;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.Random;
 @Path("/card")
 public class CardsRestService {
     //marked with "D" used to develop dealer`s functions
+    static UserRestService us = new UserRestService();
     public static int total;
     public static ArrayList<Card> hand = new ArrayList();
     public static int totalD;
@@ -24,6 +26,11 @@ public class CardsRestService {
     static String resultD = "";
     public int bet;
 
+    @POST
+    @Path("/login/{id}")
+    public void login(@PathParam("id") int id){
+        us.getUser(id);
+    }
     //adding one more card to player`s hand
     @GET
     @Path("/get")
@@ -41,9 +48,10 @@ public class CardsRestService {
     }
 
     //starts the game, adding 2 cards for both of players
-    @GET
-    @Path("/start")
-    public static void start() {
+    @POST
+    @Path("/start/{value}")
+    public static void start(@PathParam("value") int value) {
+        us.setBet(value);
         total = 0;
         totalD = 0;
         hand.clear();
@@ -94,7 +102,8 @@ public class CardsRestService {
             for (int i = 0; i < hand.size(); i++) {
                 out += "\n" + hand.get(i).toString() + "\n";
             }
-            out += "\n" + " You got: " + total + "\n";
+            out += "\n" + " You got: " + total + "\n" + "Black Jack";
+            us.blackJack();
             total = 0;
             totalD = 0;
             hand.clear();
@@ -123,7 +132,7 @@ public class CardsRestService {
             for (int i = 0; i < handD.size(); i++) {
                 outD += "\n" + handD.get(i).toString() + "\n";
             }
-            outD += "\n" + " You got: " + totalD + "\n" + " You loose";
+            outD += "\n" + " Dealer got: " + totalD + "\n" + " Dealer loose";
             total = 0;
             totalD = 0;
             hand.clear();
@@ -133,7 +142,7 @@ public class CardsRestService {
             for (int i = 0; i < handD.size(); i++) {
                 outD += "\n" + handD.get(i).toString() + "\n";
             }
-            outD += "\n" + " You got: " + totalD + "\n";
+            outD += "\n" + " Dealer got: " + totalD + "\n";
             total = 0;
             totalD = 0;
             hand.clear();
@@ -142,7 +151,7 @@ public class CardsRestService {
             for (int i = 0; i < handD.size(); i++) {
                 outD += "\n" + handD.get(i).toString() + "\n";
             }
-            outD += "\n" + " You got: " + totalD + "\n" + resultD;
+            outD += "\n" + " Dealer got: " + totalD + "\n" + resultD;
         }
         return outD;
     }
@@ -154,9 +163,11 @@ public class CardsRestService {
         if (total > totalD) {
             result += " You won";
             resultD += " You loose";
+            us.winTheBet();
         } else if (total == totalD) {
-            result += " Draw";
-            resultD += " Draw";
+            result += " Push";
+            resultD += " Push";
+            us.pushTheBet();
         }
 
     }
