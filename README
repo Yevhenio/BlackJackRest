@@ -1,0 +1,19 @@
+The game starts from login with such path http://yourserver:port/rest/game/login/id(some value from DB).
+After this you will take a player by his ID from DB.
+Then you should start the game with /rest/game/start/bet(here you should type your bet).
+This will take some money from player`s wallet and write transaction to the DB.
+And then add 2 cards to both of players.
+The transaction looks like players id + amount of money added or taken from wallet.
+Method "show" shows cards in player`s hand and their sum. If sum of cards is > than 21 player looses the game and game stops.
+/rest/game/show
+If player needs one more card the path for it is /rest/game/hit. This method will add one more card to players hand.
+Then If player need to "stand" path for it: /rest/game/stand. This will finish the game and add a definition whether player won or loose the game
+to the line "You got: value"
+Access to the dealer`s hand via /rest/game/showD it will open dealer`s hand.
+
+If player need to fill his wallet there is a path for this method /rest/fill/id/value where "id" - player`s id in DB and "value" the amount of money
+he wants to add to his wallet.
+
+To deal with your DB firstly you need to configure hibernate.cfg.xml for your database path and password.
+<property name="hbm2ddl.auto">update</property> in this line you should change "update" to "create" for first start to let the hibernate create schemas mapped by
+entities, then turn it back to "update".
