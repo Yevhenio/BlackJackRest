@@ -20,17 +20,5 @@
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
 
-	<servlet>
-		<servlet-name>index</servlet-name>
-		<jsp-file>/src/main/webapp/index.jsp</jsp-file>
-		<init-param>
-			<param-name>hello</param-name>
-			<param-value>test</param-value>
-		</init-param>
-	</servlet>
 
-	<servlet-mapping>
-		<servlet-name>index</servlet-name>
-		<url-pattern>/index</url-pattern>
-	</servlet-mapping>
 </web-app>
