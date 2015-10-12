@@ -1,4 +1,4 @@
-import com.yevhenio.blackjack.classCard.CardService;
+import com.yevhenio.blackjack.services.CardService;
 import com.yevhenio.blackjack.rest.CardsRestService;
 import com.yevhenio.blackjack.repository.UserDAO;
 import com.yevhenio.blackjack.rest.UserRestService;
