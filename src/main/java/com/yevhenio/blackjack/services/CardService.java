@@ -1,6 +1,6 @@
 package com.yevhenio.blackjack.services;
 
-import com.yevhenio.blackjack.classCard.Card;
+import com.yevhenio.blackjack.entity.Card;
 
 import java.util.ArrayList;
 

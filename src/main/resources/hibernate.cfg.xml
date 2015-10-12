@@ -20,8 +20,8 @@
 
 
 
-        <mapping class="com.yevhenio.blackjack.classUser.User"/>
-        <mapping class="com.yevhenio.blackjack.classUser.TransLog"/>
+        <mapping class="com.yevhenio.blackjack.entity.User"/>
+        <mapping class="com.yevhenio.blackjack.entity.TransLog"/>
 
     </session-factory>
 </hibernate-configuration>

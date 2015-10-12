@@ -1,7 +1,7 @@
 package com.yevhenio.blackjack.repository;
 
-import com.yevhenio.blackjack.classUser.TransLog;
-import com.yevhenio.blackjack.classUser.User;
+import com.yevhenio.blackjack.entity.TransLog;
+import com.yevhenio.blackjack.entity.User;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

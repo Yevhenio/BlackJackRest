@@ -1,6 +1,6 @@
 package com.yevhenio.blackjack.rest;
 
-import com.yevhenio.blackjack.classCard.Card;
+import com.yevhenio.blackjack.entity.Card;
 import com.yevhenio.blackjack.services.CardService;
 
 import javax.ws.rs.*;

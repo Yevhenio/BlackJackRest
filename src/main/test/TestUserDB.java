@@ -1,4 +1,4 @@
-import com.yevhenio.blackjack.classUser.User;
+import com.yevhenio.blackjack.entity.User;
 import com.yevhenio.blackjack.repository.UserDAO;
 import org.junit.Assert;
 import org.junit.Test;

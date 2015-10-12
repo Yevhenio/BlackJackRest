@@ -1,4 +1,4 @@
-package com.yevhenio.blackjack.classUser;
+package com.yevhenio.blackjack.entity;
 
 
 
