@@ -1,4 +1,4 @@
-package com.yevhenio.blackjack.servicePack;
+package com.yevhenio.blackjack.repository;
 
 
 import org.hibernate.Hibernate;

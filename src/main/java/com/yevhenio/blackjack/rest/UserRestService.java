@@ -1,7 +1,8 @@
-package com.yevhenio.blackjack.servicePack;
+package com.yevhenio.blackjack.rest;
 
 import com.yevhenio.blackjack.classUser.TransLog;
 import com.yevhenio.blackjack.classUser.User;
+import com.yevhenio.blackjack.repository.UserDAO;
 
 import javax.ws.rs.*;
 

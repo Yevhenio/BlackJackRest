@@ -1,6 +1,7 @@
-package com.yevhenio.blackjack.classCard;
+package com.yevhenio.blackjack.rest;
 
-import com.yevhenio.blackjack.servicePack.UserRestService;
+import com.yevhenio.blackjack.classCard.Card;
+import com.yevhenio.blackjack.classCard.CardService;
 
 import javax.ws.rs.*;
 import java.util.ArrayList;
@@ -30,15 +31,16 @@ public class CardsRestService {
     }
     //adding one more card to player`s hand
     @GET
-    @Path("/get")
+    @Path("/hit")
     public static void getOne() {
         Card card = (Card) cs.getCards().get(r.nextInt(52));
         hand.add(card);
     }
 
     //adding one card to dealer`s hand
+    //for future using
     @GET
-    @Path("/getD")
+    @Path("/hitD")
     public static void getOneDealer() {
         Card card = (Card) cs.getCards().get(r.nextInt(52));
         handD.add(card);
@@ -94,6 +96,7 @@ public class CardsRestService {
             //totalD = 0;
             hand.clear();
             //handD.clear();
+            showDealer();
             result = "";
         } else if (total == 21) {
             for (int i = 0; i < hand.size(); i++) {

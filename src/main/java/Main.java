@@ -1,7 +1,7 @@
 import com.yevhenio.blackjack.classCard.CardService;
-import com.yevhenio.blackjack.classCard.CardsRestService;
-import com.yevhenio.blackjack.servicePack.UserDAO;
-import com.yevhenio.blackjack.servicePack.UserRestService;
+import com.yevhenio.blackjack.rest.CardsRestService;
+import com.yevhenio.blackjack.repository.UserDAO;
+import com.yevhenio.blackjack.rest.UserRestService;
 
 import java.util.ArrayList;
 import java.util.Random;

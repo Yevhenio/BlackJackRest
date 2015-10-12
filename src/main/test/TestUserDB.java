@@ -1,5 +1,5 @@
 import com.yevhenio.blackjack.classUser.User;
-import com.yevhenio.blackjack.servicePack.UserDAO;
+import com.yevhenio.blackjack.repository.UserDAO;
 import org.junit.Assert;
 import org.junit.Test;
 
