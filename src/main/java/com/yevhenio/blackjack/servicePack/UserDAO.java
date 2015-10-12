@@ -2,8 +2,12 @@ package com.yevhenio.blackjack.servicePack;
 
 import com.yevhenio.blackjack.ClassUser.TransLog;
 import com.yevhenio.blackjack.ClassUser.User;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by eugene on 05.10.15.
@@ -17,7 +21,7 @@ public class UserDAO {
 
         try {
 
-            session.save(user);
+            session.saveOrUpdate(user);
             tx.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -41,7 +45,8 @@ public class UserDAO {
         tx.commit();
 
     }
-//Adding transaction to DB
+
+    //Adding transaction to DB
     public void addTrans(TransLog transLog) {
         Transaction tx = session.beginTransaction();
 
@@ -55,5 +60,22 @@ public class UserDAO {
             e.printStackTrace();
         }
 
+    }
+
+    public List getTransactions(int id) {
+        Transaction tx = session.beginTransaction();
+        Criteria criteria = session.createCriteria(TransLog.class);
+        List<TransLog> list = criteria.list();
+        tx.commit();
+        ArrayList<TransLog> arr = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getId() == id) {
+                arr.add(list.get(i));
+
+            }
+
+
+        }
+        return arr;
     }
 }

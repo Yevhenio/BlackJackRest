@@ -9,7 +9,7 @@ import java.io.Serializable;
 //Entity class for transactions
 @Entity
 @Table(name = "Transactions")
-public class TransLog implements Serializable{
+public class TransLog implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int idNum;
@@ -64,9 +64,9 @@ public class TransLog implements Serializable{
 
     @Override
     public String toString() {
-        return "TransLog{" +
-                "id=" + id +
-                ", value=" + value +
-                '}';
+        return "TransLog:" +
+                "id=" + id + "\n" +
+                " value=" + value +"|"
+                ;
     }
 }

@@ -5,6 +5,7 @@ import com.yevhenio.blackjack.ClassUser.User;
 import com.yevhenio.blackjack.servicePack.UserDAO;
 import com.yevhenio.blackjack.servicePack.UserRestService;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -30,7 +31,7 @@ public class Main {
             Card c = (Card) cs.getCards().get(i);
             System.out.println(c.toString()) ;
         }*/
-CardsRestService csr = new CardsRestService();
+        CardsRestService csr = new CardsRestService();
         csr.login(1111);
         csr.start(10);
         System.out.println(csr.show());
@@ -40,7 +41,11 @@ CardsRestService csr = new CardsRestService();
         System.out.println(us.player);
         csr.getResult();
 
+        ArrayList print = new ArrayList();
+        print.add(ud.getTransactions(1111));
+        System.out.println(print);
 
     }
+
 
 }
