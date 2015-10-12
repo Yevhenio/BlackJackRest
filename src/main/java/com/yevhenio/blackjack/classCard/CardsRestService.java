@@ -1,8 +1,5 @@
-package com.yevhenio.blackjack.ClassCard;
+package com.yevhenio.blackjack.classCard;
 
-import com.yevhenio.blackjack.ClassUser.TransLog;
-import com.yevhenio.blackjack.ClassUser.User;
-import com.yevhenio.blackjack.servicePack.UserDAO;
 import com.yevhenio.blackjack.servicePack.UserRestService;
 
 import javax.ws.rs.*;

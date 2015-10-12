@@ -1,7 +1,5 @@
-import com.yevhenio.blackjack.ClassCard.Card;
-import com.yevhenio.blackjack.ClassCard.CardService;
-import com.yevhenio.blackjack.ClassCard.CardsRestService;
-import com.yevhenio.blackjack.ClassUser.User;
+import com.yevhenio.blackjack.classCard.CardService;
+import com.yevhenio.blackjack.classCard.CardsRestService;
 import com.yevhenio.blackjack.servicePack.UserDAO;
 import com.yevhenio.blackjack.servicePack.UserRestService;
 

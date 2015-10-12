@@ -1,4 +1,4 @@
-package com.yevhenio.blackjack.ClassUser;
+package com.yevhenio.blackjack.classUser;
 
 import javax.persistence.*;
 import java.io.Serializable;

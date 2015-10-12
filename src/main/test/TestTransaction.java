@@ -1,5 +1,4 @@
-import com.yevhenio.blackjack.ClassUser.TransLog;
-import com.yevhenio.blackjack.ClassUser.User;
+import com.yevhenio.blackjack.classUser.TransLog;
 import com.yevhenio.blackjack.servicePack.UserDAO;
 import org.junit.Assert;
 import org.junit.Test;

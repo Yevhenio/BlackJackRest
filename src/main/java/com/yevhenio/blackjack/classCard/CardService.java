@@ -1,4 +1,4 @@
-package com.yevhenio.blackjack.ClassCard;
+package com.yevhenio.blackjack.classCard;
 
 import java.util.ArrayList;
 

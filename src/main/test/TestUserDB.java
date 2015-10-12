@@ -1,8 +1,6 @@
-import com.yevhenio.blackjack.ClassUser.User;
+import com.yevhenio.blackjack.classUser.User;
 import com.yevhenio.blackjack.servicePack.UserDAO;
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**

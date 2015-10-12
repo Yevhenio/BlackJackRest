@@ -1,4 +1,4 @@
-package com.yevhenio.blackjack.ClassCard;
+package com.yevhenio.blackjack.classCard;
 
 /**
  * Created by eugene on 08.10.15.
