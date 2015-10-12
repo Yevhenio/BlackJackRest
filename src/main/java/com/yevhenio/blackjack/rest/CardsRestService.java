@@ -22,7 +22,7 @@ public class CardsRestService {
     static Random r = new Random();
     static String result = "";
     static String resultD = "";
-    public int bet;
+
 
     @POST
     @Path("/login/{id}")
