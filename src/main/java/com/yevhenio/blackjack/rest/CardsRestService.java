@@ -26,9 +26,10 @@ public class CardsRestService {
 
     @POST
     @Path("/login/{id}")
-    public void login(@PathParam("id") int id){
+    public void login(@PathParam("id") int id) {
         us.getUser(id);
     }
+
     //adding one more card to player`s hand
     @GET
     @Path("/hit")
@@ -93,9 +94,7 @@ public class CardsRestService {
             }
             out += "\n" + " You got: " + total + "\n" + " You loose";
             total = 0;
-            //totalD = 0;
             hand.clear();
-            //handD.clear();
             showDealer();
             result = "";
         } else if (total == 21) {
