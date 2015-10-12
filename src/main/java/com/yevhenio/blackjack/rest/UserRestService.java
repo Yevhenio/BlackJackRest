@@ -31,21 +31,21 @@ public class UserRestService {
         ud.updateUser(user);
         ud.addTrans(new TransLog(user.getId(), sum));
     }
-
+    //calculating bet in case of win
     public void winTheBet() {
         player.setWallet(player.getWallet() + bet * 2);
         ud.updateUser(player);
         ud.addTrans(new TransLog(player.getId(), bet * 2));
         bet = 0;
     }
-
+    //calculating bet in case of Push
     public void pushTheBet() {
         player.setWallet(player.getWallet() + bet);
         ud.updateUser(player);
         ud.addTrans(new TransLog(player.getId(), bet));
         bet = 0;
     }
-
+//calculating bet in case of BlackJack
     public void blackJack() {
         int half = bet / 2;
         player.setWallet(player.getWallet() + bet * 2 + half);
