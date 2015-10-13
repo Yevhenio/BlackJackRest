@@ -146,6 +146,8 @@ public class CardsRestService {
             totalD = 0;
             hand.clear();
             handD.clear();
+        } else if (totalD < 17) {
+            getOneDealer();
         } else {
             for (int i = 0; i < handD.size(); i++) {
                 outD += "\n" + handD.get(i).toString() + "\n";
