@@ -10,7 +10,7 @@ import java.util.Random;
 /**
  * Created by eugene on 05.10.15.
  */
-@Path("/card")
+@Path("/game")
 public class CardsRestService {
     //marked with "D" used to develop dealer`s functions
     static UserRestService us = new UserRestService();
