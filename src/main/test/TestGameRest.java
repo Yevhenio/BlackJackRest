@@ -9,8 +9,22 @@ public class TestGameRest {
     CardsRestService csr = new CardsRestService();
 
     @Test
-    public void loginTest(){
+    public void loginTest() {
         csr.login(1111);
+    }
+
+    @Test
+    public void hitTest() {
+        csr.getOne();
+    }
+
+    @Test
+    public void showResultTest() {
+        Assert.assertNotNull(csr.show());
+    }
+    @Test
+    public void getResultTest(){
+        csr.getResult();
     }
 
 }

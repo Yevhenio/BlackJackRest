@@ -31,7 +31,7 @@ public class CardsRestService {
     }
 
     //adding one more card to player`s hand
-    @GET
+    @POST
     @Path("/hit")
     public static void getOne() {
         Card card = (Card) cs.getCards().get(r.nextInt(52));
